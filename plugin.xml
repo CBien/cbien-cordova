@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-cbienkit" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>CBienKit</name>
+	<author>CBien</author>
+    <license>MIT License</license>
+    <description>Cordova plugin for CBienKit</description>
+    <!-- <repo>https://github.com/cbien/cbien-cordova.git</repo> -->
+    <keywords>cbien,cbien-cordova</keywords>
+
+	<dependency id="cordova-plugin-file" version="^4.0.0" />
+
+	<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
+
+    <engines>
+      <engine name="cordova" version=">=4.0.0" />
+      <engine name="cordova-android" version=">=4.0.0" />
+      <engine name="cordova-ios" version=">=4.0.0" />
+    </engines>
+
+	<js-module name="CBienKit" src="www/CBienKit.js">
+		<clobbers target="CBienKit" />
+	</js-module>
+
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="CBienKit">
+				<param name="ios-package" value="CBienKit" />
+				<param name="onload" value="true" />
+			</feature>
+		</config-file>
+
+		<source-file src="src/ios/CBienKit.m" />
+		<framework src="src/ios/CBienKit.framework" custom="true"/>
+
+		<framework src="Foundation.framework" />
+	    <framework src="UIKit.framework" />
+	    <framework src="QuartzCore.framework" />
+
+	</platform>
+</plugin>
