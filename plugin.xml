@@ -4,7 +4,7 @@
 	<author>CBien</author>
     <license>MIT License</license>
     <description>Cordova plugin for CBienKit</description>
-    <!-- <repo>https://github.com/cbien/cbien-cordova.git</repo> -->
+    <repo>https://github.com/CBien/cbien-cordova.git</repo>
     <keywords>cbien,cbien-cordova</keywords>
 
 	<dependency id="cordova-plugin-file" version="^4.0.0" />
