@@ -25,15 +25,15 @@ To configure CBienKit, you must add your app's keys to your `config.xml`:
 
 1. Firstly, on successful completion of login (or wherever you check your user's authenticated state when your app starts up) you will need to initialize with user's identifier.
 
-    CBienKit.initialize({uniqueIdentifier: "unique_identifier"})
+        CBienKit.initialize({uniqueIdentifier: "unique_identifier"})
 
 2. Also, you can customize logo and colors (all parameters are optional)
 
-    CBienKit.configure({logo:"logo_base64", primaryColor:"#004B9B", colorOnPrimaryColorHex:"#FFFFFF",  secondaryColor:"#FDC600", colorOnSecondaryColorHex:"#FFFFFF"})
+        CBienKit.configure({logo:"logo_base64", primaryColor:"#004B9B", colorOnPrimaryColorHex:"#FFFFFF",  secondaryColor:"#FDC600", colorOnSecondaryColorHex:"#FFFFFF"})
 
 3. Finally, display CBien screens.
-  
-    CBienKit.show()
+
+        CBienKit.show()
 
 ## License
 
