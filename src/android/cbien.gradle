@@ -1,0 +1,38 @@
+repositories { 
+  jcenter()
+  flatDir{
+      dirs 'aar'
+   }
+}
+
+android {
+  packagingOptions {
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+  }
+}
+
+dependencies {
+
+	compile(name:'cbien', ext:'aar')
+
+    compile 'com.android.support:multidex:1.+'
+    compile 'com.android.support:appcompat-v7:24.+'
+    compile 'com.android.support:design:24.+'
+    compile 'com.android.support:recyclerview-v7:24.+'
+    compile 'com.android.support:cardview-v7:24.+'
+    compile 'com.android.support:customtabs:24.+'
+
+    compile 'com.squareup.okio:okio:1.+'
+    compile('com.squareup.okhttp3:okhttp:3.+') { exclude module: 'com.squareup.okio' }
+    compile('com.squareup.retrofit2:retrofit:2.+') { exclude module: 'com.squareup.okio' }
+    compile('com.squareup.retrofit2:converter-gson:2.+') { exclude module: 'com.squ+areup.okio' }
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.commit451:PhotoView:1.2.5'
+
+    compile 'com.google.code.gson:gson:2.+'
+    compile 'com.google.zxing:core:3.+'
+
+    compile('com.journeyapps:zxing-android-embedded:3.0.2@aar') {transitive = true;}
+}

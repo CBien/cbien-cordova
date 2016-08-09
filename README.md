@@ -18,8 +18,11 @@ To install the plugin in your Cordova app, run the following:
 
 To configure CBienKit, you must add your app's keys to your `config.xml`:
 
-    <preference name="cbien-ios-clientid" value="your_client_id"/>
-    <preference name="cbien-ios-clientsecret" value="your_client_secret"/>
+    <preference name="cbien-ios-clientid" value="your_client_id_for_ios"/>
+    <preference name="cbien-ios-clientsecret" value="your_client_secret_for_ios"/>
+
+    <preference name="cbien-android-clientid" value="your_client_id_for_android"/>
+    <preference name="cbien-android-clientsecret" value="your_client_secret_for_android"/>
 
 ## Use
 

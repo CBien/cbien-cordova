@@ -36,4 +36,20 @@
 	    <framework src="QuartzCore.framework" />
 
 	</platform>
+
+	<platform name="android">
+
+		<source-file src="src/android/CBienKit.java" target-dir="src/com/cbien/android/sdk" />
+
+		<framework src="src/android/cbien.gradle" custom="true" type="gradleReference" />
+
+    	<resource-file src="aar/cbien.aar" target="aar/cbien.aar" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="CBienKit">
+                <param name="android-package" value="com.cbien.android.sdk.CBienKit"/>
+				<param name="onload" value="true" />
+            </feature>
+        </config-file>
+    </platform>
 </plugin>
