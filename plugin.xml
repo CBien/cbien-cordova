@@ -9,11 +9,11 @@
 
 	<dependency id="cordova-plugin-file" version="^4.0.0" />
 
-	<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
 
     <engines>
       <engine name="cordova" version=">=4.0.0" />
       <engine name="cordova-ios" version=">=4.0.0" />
+      <engine name="cordova-android" version=">=4.0.0" />
     </engines>
 
 	<js-module name="CBienKit" src="www/CBienKit.js">
@@ -21,6 +21,7 @@
 	</js-module>
 
 	<platform name="ios">
+		<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
 		<config-file parent="/*" target="config.xml">
 			<feature name="CBienKit">
 				<param name="ios-package" value="CBienKit" />

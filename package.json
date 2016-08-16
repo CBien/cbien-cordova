@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-cbienkit",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Cordova plugin for CBienKit",
   "cordova": {
     "id": "cordova-plugin-cbienkit",
@@ -17,7 +17,8 @@
     "cbien",
     "cbien-cordova",
     "ecosystem:cordova",
-    "cordova-ios"
+    "cordova-ios",
+    "cordova-android"
   ],
   "engines": [
     {
@@ -26,6 +27,10 @@
     },
     {
       "name": "cordova-ios",
+      "version": ">=4.0.0"
+    },
+    {
+      "name": "cordova-android",
       "version": ">=4.0.0"
     }
   ],
