@@ -4,7 +4,7 @@ This is a plugin that allows your Cordova app to use CBienKit for iOS and Androi
 
 ## Requirements
 
-CBienKit supports iOS 8.x and above and Android 4.0.3 (API15) and above. 
+CBienKit supports iOS 8.0 and above and Android 4.0.3 (API15) and above. 
 
 ## Installation
 
