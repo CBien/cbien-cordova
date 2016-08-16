@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import com.cbien.sdk.CBienSDk;
 
-public class CBienPlugin extends CordovaPlugin {
+public class CBienKit extends CordovaPlugin {
 
     String clientId;
     String clientSecret;
