@@ -55,8 +55,8 @@ public class CBienKit extends CordovaPlugin {
                         clientId,
                         clientSecret,
                         uniqueIdentifier,
-                        secondaryColor,
                         primaryColor,
+                        secondaryColor,
                         logo);
             }
         }
