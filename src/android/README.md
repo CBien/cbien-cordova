@@ -48,11 +48,11 @@ La méthode 'start' peut être appelé de deux façons différentes.
 
 L'utilisation complête :
 
-    CbienSDK,start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier, String primaryColorHexa, String secondaryColorHexa, int idRessourceLogo);
+    CbienSDK.start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier, String primaryColorHexa, String secondaryColorHexa, String logoBase64);
 
 L'utilisation simple :
 
-    CbienSDK,start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier);
+    CbienSDK.start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier);
 
 Le paramètre currentActivity est l'activité depuis lequel est lancé le SDK.
 
@@ -63,15 +63,8 @@ Le paramètre clientSecret est votre clientSecret permettant la connexion à l'a
 Le paramètre uniqueIdentifier est l'identifiant sociétaire utilisant votre application.
 
 Les paramètres primaryColorHexa et secondaryColorHexa sont les couleurs du thème utilisé par le SDK, elles sont à renseigner en hexadécimal, exemple : '#8822EE'.
-
 Dans l'utilisation simple du SDK, les couleurs utiliser sont les couleurs de CBien (bleu et vert).
 
-Le paramètre idRessourceLogo est le logo affiché dans le SDK, il sera suivis de 'en partenariat avec Cbien.com'.
-
-Mettre de préférence un logo carré, car celui-ci sera redimensionné en 73x73 pixel.
-
-Ce logo est une image dans les ressources de votre application, exemple :
-    emplacement → 'res.drawable.logo.png'
-    idRessourceLogo → R,drawable,logo
-
+Le paramètre logoBase64 est le logo affiché dans le SDK, il sera suivis de 'en partenariat avec Cbien.com'.
+Le logo doit être une chaine de caractère au format Base64.
 Dans l'utilisation simple du SDK, aucune logo ne sera affiché.
