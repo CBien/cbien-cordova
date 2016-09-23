@@ -7,7 +7,7 @@ const xcode = require('xcode'),
 module.exports = function(context) {
     if(process.length >=5 && process.argv[1].indexOf('cordova') == -1) {
         if(process.argv[4] != 'ios') {
-            return; // plugin only meant to work for ios platform.
+            return;
         }
     }
 
@@ -23,7 +23,7 @@ module.exports = function(context) {
             var filename=path.join(startPath,files[i]);
             var stat = fs.lstatSync(filename);
             if (stat.isDirectory() && rec){
-                fromDir(filename,filter); //recurse
+                fromDir(filename,filter);
             }
 
             if (filename.indexOf(filter)>=0) {
@@ -46,7 +46,7 @@ module.exports = function(context) {
             var frameworkBuildPhaseFile = pbxFrameworksBuildPhaseObjFiles[i];
             if(frameworkBuildPhaseFile.comment && frameworkBuildPhaseFile.comment.indexOf(fileBasename) != -1) {
                 fileId = frameworkBuildPhaseFile.value;
-                pbxFrameworksBuildPhaseObjFiles.splice(i,1); // MUST remove from frameworks build phase or else CodeSignOnCopy won't do anything.
+                pbxFrameworksBuildPhaseObjFiles.splice(i,1);
                 break;
             }
         }
@@ -87,9 +87,10 @@ module.exports = function(context) {
     addRunpathSearchBuildProperty(myProj, "Debug");
     addRunpathSearchBuildProperty(myProj, "Release");
 
-    // unquote (remove trailing ")
     var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
-    projectName = projectName.substr(0, projectName.length-1); //Removing the char " at beginning and the end.
+    projectName = projectName.substr(0, projectName.length-1);
+
+    // ADD TO EMBEDED FRAMEWORKS
 
     const groupName = 'Embed Frameworks ' + context.opts.plugin.id;
     const pluginPathInPlatformIosDir = projectName + '/Plugins/' + context.opts.plugin.id;
@@ -103,11 +104,11 @@ module.exports = function(context) {
     myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
 
     for(var frmFileFullPath of frameworkFilesToEmbed) {
+
         var justFrameworkFile = path.basename(frmFileFullPath);
         var fileRef = getFileRefFromName(myProj, justFrameworkFile);
         var fileId = getFileIdAndRemoveFromFrameworks(myProj, justFrameworkFile);
 
-        // Adding PBXBuildFile for embedded frameworks
         var file = {
             uuid: fileId,
             basename: justFrameworkFile,
@@ -120,8 +121,6 @@ module.exports = function(context) {
         };
         myProj.addToPbxBuildFileSection(file);
 
-
-        // Adding to Frameworks as well (separate PBXBuildFile)
         var newFrameworkFileEntry = {
             uuid: myProj.generateUuid(),
             basename: justFrameworkFile,
@@ -135,4 +134,14 @@ module.exports = function(context) {
 
     fs.writeFileSync(projectPath, myProj.writeSync());
     console.log('Embedded Frameworks In ' + context.opts.plugin.id);
+
+
+    // ADD BUILD PHASE TO TRIM FRAMEWORK
+    var buildPhase = myProj.addBuildPhase([], 'PBXShellScriptBuildPhase', 'ShellScript', myProj.getFirstTarget().uuid).buildPhase;
+    buildPhase['shellPath'] = '/bin/sh';
+    buildPhase['shellScript'] = '"APP_PATH=\\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\\"\\n\\n# This script loops through the frameworks embedded in the application and\\n# removes unused architectures.\\nfind \\"$APP_PATH\\" -name \'*.framework\' -type d | while read -r FRAMEWORK\\ndo\\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \\"$FRAMEWORK/Info.plist\\" CFBundleExecutable)\\nFRAMEWORK_EXECUTABLE_PATH=\\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\\"\\necho \\"Executable is $FRAMEWORK_EXECUTABLE_PATH\\"\\n\\nEXTRACTED_ARCHS=()\\n\\nfor ARCH in $ARCHS\\ndo\\necho \\"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\\"\\nlipo -extract \\"$ARCH\\" \\"$FRAMEWORK_EXECUTABLE_PATH\\" -o \\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\\"\\nEXTRACTED_ARCHS+=(\\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\\")\\ndone\\n\\necho \\"Merging extracted architectures: ${ARCHS}\\"\\nlipo -o \\"$FRAMEWORK_EXECUTABLE_PATH-merged\\" -create \\"${EXTRACTED_ARCHS[@]}\\"\\nrm \\"${EXTRACTED_ARCHS[@]}\\"\\n\\necho \\"Replacing original executable with thinned version\\"\\nrm \\"$FRAMEWORK_EXECUTABLE_PATH\\"\\nmv \\"$FRAMEWORK_EXECUTABLE_PATH-merged\\" \\"$FRAMEWORK_EXECUTABLE_PATH\\"\\n\\ndone"';
+    buildPhase['runOnlyForDeploymentPostprocessing'] = 0;
+
+    fs.writeFileSync(projectPath, myProj.writeSync());
+    console.log('Added Arch Trim run script build phase');
 };

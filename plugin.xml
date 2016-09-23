@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-cbienkit" version="0.0.9" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-cbienkit" version="0.0.10" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>CBienKit</name>
 	<author>CBien</author>
     <license>MIT License</license>
@@ -8,6 +8,7 @@
     <keywords>cbien,cbien-cordova</keywords>
 
 	<dependency id="cordova-plugin-file" version="^4.0.0" />
+	<dependency id="cordova-plugin-add-swift-support" version="1.3.2"/>
 
     <engines>
       <engine name="cordova" version=">=4.0.0" />
@@ -20,8 +21,7 @@
 	</js-module>
 
 	<platform name="ios">
-		<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
-		<hook type="after_platform_add" src="hooks/after_platform_add.js" />
+		<hook type="before_build" src="hooks/before_build.js" />
 
 		<config-file parent="/*" target="config.xml">
 			<feature name="CBienKit">
