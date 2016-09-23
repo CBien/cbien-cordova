@@ -10,10 +10,9 @@ CBienKit supports iOS 8.0 and above and Android 4.0.3 (API15) and above.
 
 To install the plugin in your Cordova app, run the following:
 
-    npm install xcode //iOS only
+    npm install xcode
     cordova plugin add cordova-plugin-cbienkit
-    cordova plugin add cordova-plugin-add-swift-support --save //iOS only
-    
+
 ## Configuring 
 
 To configure CBienKit, you must add your app's keys to your `config.xml`:
