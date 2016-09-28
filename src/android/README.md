@@ -17,11 +17,11 @@ Attendez que l'application finisse de builder, puis fermez la page.
 Allez ensuite dans le 'build.gradle' de votre module principale (nommé 'app'), puis ajouter ces lignes dans la balise 'dependencies' :
 
     compile 'com.android.support:multidex:1.+'
-    compile 'com.android.support:appcompat-v7:24.+'
-    compile 'com.android.support:design:24.+'
-    compile 'com.android.support:recyclerview-v7:24.+'
-    compile 'com.android.support:cardview-v7:24.+'
-    compile 'com.android.support:customtabs:24.+'
+    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.android.support:design:23.+'
+    compile 'com.android.support:recyclerview-v7:23.+'
+    compile 'com.android.support:cardview-v7:23.+'
+    compile 'com.android.support:customtabs:23.+'
     compile 'com.google.code.gson:gson:2.+'
     compile 'com.google.zxing:core:3.+'
     compile 'com.squareup.okio:okio:1.+'
