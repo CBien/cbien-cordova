@@ -9,6 +9,8 @@
 
 - (void)initialize:(CDVInvokedUrlCommand*)command;
 - (void)configure:(CDVInvokedUrlCommand*)command;
+- (void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command;
+- (void)setRefreshToken:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
 
 @end
@@ -27,15 +29,22 @@
 
 - (void)initialize:(CDVInvokedUrlCommand*)command
 {
+    BOOL inProduction = [self.commandDelegate.settings[@"cbien-ios-inproduction"] boolValue];
     NSString* clientId = self.commandDelegate.settings[@"cbien-ios-clientid"];
     NSString* clientSecret = self.commandDelegate.settings[@"cbien-ios-clientsecret"];
     
     NSDictionary *options = command.arguments[0];
     NSString *uniqueIdentifier = options[@"uniqueIdentifier"];
     
-    [CBienCore configureWithClientId:clientId andSecret:clientSecret andUniqueIdentifier:uniqueIdentifier];
+    CDVPluginResult* pluginResult = nil;
     
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    if(clientId != nil && clientId.length>0 && clientSecret != nil && clientSecret.length>0 && uniqueIdentifier != nil && uniqueIdentifier.length>0){
+        [CBienCore configureWithClientId:clientId secret:clientSecret uniqueIdentifier:uniqueIdentifier inProduction:inProduction];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
+    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
@@ -70,6 +79,29 @@
     }
     
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[CBienCore refreshTokenNeeded]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void)setRefreshToken:(CDVInvokedUrlCommand*)command
+{
+    NSDictionary *options = command.arguments[0];
+    NSString *refreshToken = options[@"refreshToken"];
+    
+    CDVPluginResult* pluginResult = nil;
+    
+    if(refreshToken != nil && refreshToken.length>0){
+        [CBienCore setRefreshToken:refreshToken];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
+    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
