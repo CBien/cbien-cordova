@@ -36,14 +36,14 @@ public class CBienKit extends CordovaPlugin {
         if (action.equals("initialize")) {
 
             this.uniqueIdentifier = args.getJSONObject(0).getString("uniqueIdentifier");
-            if(args.getJSONObject(0).has("refreshToken")) {
+        }
+        else if (action.equals("refreshTokenNeeded")) {
+            
+            callbackContext.success(CBienSDk.needToken(cordova.getActivity()) ? 1 : 0);
+        }
+        else if (action.equals("setRefreshToken")) {
 
-                this.refreshToken = args.getJSONObject(0).getString("refreshToken");
-            }
-            else {
-
-                this.refreshToken = "";
-            }
+            this.refreshToken = args.getJSONObject(0).getString("refreshToken");
         }
         else if (action.equals("configure")) {
             

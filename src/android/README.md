@@ -85,3 +85,7 @@ Dans l'utilisation simple du SDK, les couleurs utiliser sont les couleurs de CBi
 Le paramètre logoBase64 est le logo affiché dans le SDK, il sera suivis de 'en partenariat avec Cbien.com'.
 Le logo doit être une chaine de caractère au format Base64.
 Dans l'utilisation simple du SDK, aucune logo ne sera affiché.
+
+Vous aurez aussi accès à la méthode needToken(Activity currentActivity), 
+qui pemert de savoir si vous devez renseignez le paramètre 'refreshToken' ou le laisser null.
+
