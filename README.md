@@ -43,7 +43,7 @@ To configure CBienKit, you must add domains names and your app's keys to your `c
 
 4. Check if new refresh token needed and set a new one (Optional)
 
-    CBienKit.refreshTokenNeeded(function(needed) { if(needed){ CBienKit.setRefreshToken({refreshToken: "refresh_token"}); } });
+        CBienKit.refreshTokenNeeded(function(needed) { if(needed){ CBienKit.setRefreshToken({refreshToken: "refresh_token"}); } });
 
 3. Finally, display CBien screens.
 
