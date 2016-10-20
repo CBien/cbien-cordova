@@ -135,7 +135,6 @@ module.exports = function(context) {
     fs.writeFileSync(projectPath, myProj.writeSync());
     console.log('Embedded Frameworks In ' + context.opts.plugin.id);
 
-
     // ADD BUILD PHASE TO TRIM FRAMEWORK
     var buildPhase = myProj.addBuildPhase([], 'PBXShellScriptBuildPhase', 'ShellScript', myProj.getFirstTarget().uuid).buildPhase;
     buildPhase['shellPath'] = '/bin/sh';
