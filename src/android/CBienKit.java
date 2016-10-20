@@ -12,7 +12,9 @@ public class CBienKit extends CordovaPlugin {
 
     String clientId;
     String clientSecret;
+    boolean inproduction;
     String uniqueIdentifier;
+    String refreshToken;
     String logo;
     String primaryColor;
     String secondaryColor;
@@ -23,6 +25,7 @@ public class CBienKit extends CordovaPlugin {
 
         clientId = preferences.getString("cbien-android-clientid", null);
         clientSecret = preferences.getString("cbien-android-clientsecret", null);
+        inproduction = Boolean.valueOf(preferences.getString("cbien-android-inproduction", "false"));
     }
 
     @Override
@@ -33,6 +36,14 @@ public class CBienKit extends CordovaPlugin {
         if (action.equals("initialize")) {
 
             this.uniqueIdentifier = args.getJSONObject(0).getString("uniqueIdentifier");
+            if(args.getJSONObject(0).has("refreshToken")) {
+
+                this.refreshToken = args.getJSONObject(0).getString("refreshToken");
+            }
+            else {
+
+                this.refreshToken = "";
+            }
         }
         else if (action.equals("configure")) {
             
@@ -47,14 +58,18 @@ public class CBienKit extends CordovaPlugin {
                 CBienSDk.start(cordova.getActivity(),
                         clientId,
                         clientSecret,
-                        uniqueIdentifier);
+                        inproduction,
+                        uniqueIdentifier,
+                        refreshToken);
             }
             else {
 
                 CBienSDk.start(cordova.getActivity(),
                         clientId,
                         clientSecret,
+                        inproduction,
                         uniqueIdentifier,
+                        refreshToken,
                         primaryColor,
                         secondaryColor,
                         logo);

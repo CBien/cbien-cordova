@@ -19,15 +19,21 @@ To configure CBienKit, you must add your app's keys to your `config.xml`:
 
     <preference name="cbien-ios-clientid" value="your_client_id_for_ios"/>
     <preference name="cbien-ios-clientsecret" value="your_client_secret_for_ios"/>
+    <preference name="cbien-ios-inproduction" value="true_or_false"/>
 
     <preference name="cbien-android-clientid" value="your_client_id_for_android"/>
     <preference name="cbien-android-clientsecret" value="your_client_secret_for_android"/>
+    <preference name="cbien-android-inproduction" value="true_or_false"/>
 
 ## Use
 
 1. Firstly, on successful completion of login (or wherever you check your user's authenticated state when your app starts up) you will need to initialize with user's identifier.
 
         CBienKit.initialize({uniqueIdentifier: "unique_identifier"})
+
+        or
+
+        CBienKit.initialize({uniqueIdentifier: "unique_identifier", refreshToken: "refresh_token"})
 
 2. Also, you can customize logo and colors (all parameters are optional)
 

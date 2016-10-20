@@ -48,11 +48,24 @@ La méthode 'start' peut être appelé de deux façons différentes.
 
 L'utilisation complête :
 
-    CbienSDK.start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier, String primaryColorHexa, String secondaryColorHexa, String logoBase64);
+    CbienSDK.start(Activity currentActivity, 
+        String, clientId, 
+        String clientSecret, 
+        boolean inproduction, 
+        String uniqueIdentifier, 
+        String refreshToken, 
+        String primaryColorHexa, 
+        String secondaryColorHexa, 
+        String logoBase64);
 
 L'utilisation simple :
 
-    CbienSDK.start(Activity currentActivity, String, clientId, String clientSecret, String uniqueIdentifier);
+    CbienSDK.start(Activity currentActivity, 
+        String, clientId, 
+        String clientSecret, 
+        boolean inproduction, 
+        String uniqueIdentifier, 
+        String refreshToken);
 
 Le paramètre currentActivity est l'activité depuis lequel est lancé le SDK.
 
@@ -60,7 +73,11 @@ Le paramètre clientId est votre clientId permettant la connexion à l'api CBien
 
 Le paramètre clientSecret est votre clientSecret permettant la connexion à l'api CBien.
 
+Le paramètre inproduction permet d'utiliser l'api en prod ou celle destiné aux partenaires.
+
 Le paramètre uniqueIdentifier est l'identifiant sociétaire utilisant votre application.
+
+Le paramètre refreshToken permet une synchronisation des compte entre le web et le mobile, optionnel, peut être vide ou null.
 
 Les paramètres primaryColorHexa et secondaryColorHexa sont les couleurs du thème utilisé par le SDK, elles sont à renseigner en hexadécimal, exemple : '#8822EE'.
 Dans l'utilisation simple du SDK, les couleurs utiliser sont les couleurs de CBien (bleu et vert).
