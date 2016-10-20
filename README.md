@@ -15,8 +15,16 @@ To install the plugin in your Cordova app, run the following:
 
 ## Configuring 
 
-To configure CBienKit, you must add your app's keys to your `config.xml`:
+To configure CBienKit, you must add domains names and your app's keys to your `config.xml`:
 
+    <access origin="http://*.cbien.com"></access>
+    <access origin="http://cbien-partner.herokuapp.com"></access>
+    <access origin="http://*.amazonaws.com"></access>
+    <access origin="http://*.newrelic.com"></access>
+    <access origin="http://*.nr-data.net"></access>
+    <access origin="http://*.googleapis.com"></access>
+
+    <preference name="cbien-ios-inproduction" value="true"/>
     <preference name="cbien-ios-clientid" value="your_client_id_for_ios"/>
     <preference name="cbien-ios-clientsecret" value="your_client_secret_for_ios"/>
 
@@ -32,6 +40,10 @@ To configure CBienKit, you must add your app's keys to your `config.xml`:
 2. Also, you can customize logo and colors (all parameters are optional)
 
         CBienKit.configure({logo:"logo_base64", primaryColor:"#004B9B", colorOnPrimaryColorHex:"#FFFFFF",  secondaryColor:"#FDC600", colorOnSecondaryColorHex:"#FFFFFF"})
+
+4. Check if new refresh token needed and set a new one (Optional)
+
+    CBienKit.refreshTokenNeeded(function(needed) { if(needed){ CBienKit.setRefreshToken({refreshToken: "refresh_token"}); } });
 
 3. Finally, display CBien screens.
 
