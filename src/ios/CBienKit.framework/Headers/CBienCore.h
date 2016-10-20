@@ -13,10 +13,25 @@
 /**
  *  Configure the SDK before call 'show:'
  *
- *  @param clientId Your client_id
- *  @param secret   Your client_secret
+ *  @param clientId             Your client_id
+ *  @param secret               Your client_secret
+ *  @param uniqueIdentifier     User identifier
+ *  @param inProduction         Choose beetween Production or Staging
  */
-+(void)configureWithClientId:(NSString *_Nonnull)clientId andSecret:(NSString *_Nonnull)secret andUniqueIdentifier:(NSString *_Nonnull)uniqueIdentifier;
++(void)configureWithClientId:(NSString *_Nonnull)clientId secret:(NSString *_Nonnull)secret uniqueIdentifier:(NSString *_Nonnull)uniqueIdentifier inProduction:(BOOL)inProduction;
+
+/**
+ *  Check if refresh token needed
+ *
+ */
++(BOOL)refreshTokenNeeded;
+
+/**
+ *  Set the user refresh token
+ *
+ *  @param refreshToken The refresh token
+ */
++(void)setRefreshToken:(NSString *_Nonnull)refreshToken;
 
 /**
  *  Show login or dashboard
