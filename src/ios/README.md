@@ -29,23 +29,6 @@ Le SDK permet différentes actions sur un compte CBien :
 
 ## Installation
 
-#### Cocoapods
-
-Le SDK CBien peut être installé via Cocoapods. Ouvrir le terminal et positionnez vous dans le dossier de votre projet Xcode. Si vous n’avez pas encore de fichier Podfile pour votre application, en créer un à l’aide de la
-commande :
-
-    pod init
-
-Ouvrir le fichier Podfile créé et ajouter la ligne suivante :
-
-    pod ‘CBienKit’
-
-Sauvegarder le fichier puis executer la commande suivante :
-
-    pod install
-
-Cela créé un fichier .xcworkspace pour votre application. Ouvrir votre project avec ce fichier pour les futurs développement.
-
 #### Manuellement
 
 Télécharger le framework, puis, dans votre projet Xcode, se rendre dans : 
@@ -60,15 +43,16 @@ Ajouter le SDK dans votre AppDelegate
 
     #import <CBienKit/CBienKit.h>
 
-Ensuite, dans la méthode didFinishLaunchingWithOptions :
+Ensuite, dans la méthode didFinishLaunchingWithOptions (ou au moment de la connexion de l'utilisateur pour avoir son unique_id) :
 
-    [CBienCore configureWithClientId:@"<CLIENT_ID>" andSecret:@« <SECRET> » andUniqueIdentifier:@« <UNIQUE_ID> »];
+    [CBienCore configureWithClientId:@"<CLIENT_ID>" secret:@«<SECRET> » uniqueIdentifier:@«<UNIQUE_ID>» inProduction:<IN_PRODUCTION>];
 
 Avec :
 
     • <CLIENT_ID> : le client_id que nous vous avons fourni.
     • <SECRET> : la clé secrète que nous vous avons fourni.
     • <UNIQUE_ID> : un identifiant unique de l’utilisateur utilisant l’application
+    • <IN_PRODUCTION> : choix entre le serveur de recette (false) ou la production (true)
 
 Le SDK doit pouvoir ouvrir l’application CBien. Pour cela modifier le fichier « info.plist », ajouter la clé « LSApplicationQueriesSchemes » (array) et ajouter la chaine « cbien »
 
