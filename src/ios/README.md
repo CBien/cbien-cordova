@@ -67,6 +67,11 @@ Pour cela, à la suite de la précédente ligne, ajouter :
     [CBienCore setColorOnPrimaryColor::[UIColor whiteColor]];
     [CBienCore setSecondaryColor:[UIColor redColor]];
     [CBienCore setColorOnSecondaryColor:[UIColor whiteColor]];
+    
+### Refresh token
+
+Un refresh token peut être renseigné au SDK afin de vérifier l’éligibilité du sociétaire à l’offre. Si aucun refresh token n’est renseigné, l'utilisateur est considéré comme éligible. 
+Vous avez accès à la méthode "[CBienCore refreshTokenNeeded]", qui permet de savoir si vous devez renseignez un nouveau refresh token. Le nouveau refresh token se défini via la méthode "[CBienCore setRefreshToken:@"your_refresh_token"];"
 
 ## Utiliser le SDK
 
