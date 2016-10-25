@@ -67,25 +67,14 @@ L'utilisation simple :
         String uniqueIdentifier, 
         String refreshToken);
 
-Le paramètre currentActivity est l'activité depuis lequel est lancé le SDK.
+#### Obligatoire :
+    - currentActivity : l'activité depuis lequel est lancé le SDK.
+    - clientId : votre clientId permettant la connexion à l'api CBien.
+    - clientSecret : votre clientSecret permettant la connexion à l'api CBien.
+    - inproduction : permet d'utiliser l'api en prod ou celle destiné aux partenaires.
+    - uniqueIdentifier : l'identifiant sociétaire utilisant votre application.
 
-Le paramètre clientId est votre clientId permettant la connexion à l'api CBien.
-
-Le paramètre clientSecret est votre clientSecret permettant la connexion à l'api CBien.
-
-Le paramètre inproduction permet d'utiliser l'api en prod ou celle destiné aux partenaires.
-
-Le paramètre uniqueIdentifier est l'identifiant sociétaire utilisant votre application.
-
-Le paramètre refreshToken permet une synchronisation des compte entre le web et le mobile, optionnel, peut être vide ou null.
-
-Les paramètres primaryColorHexa et secondaryColorHexa sont les couleurs du thème utilisé par le SDK, elles sont à renseigner en hexadécimal, exemple : '#8822EE'.
-Dans l'utilisation simple du SDK, les couleurs utiliser sont les couleurs de CBien (bleu et vert).
-
-Le paramètre logoBase64 est le logo affiché dans le SDK, il sera suivis de 'en partenariat avec Cbien.com'.
-Le logo doit être une chaine de caractère au format Base64.
-Dans l'utilisation simple du SDK, aucune logo ne sera affiché.
-
-Vous aurez aussi accès à la méthode needToken(Activity currentActivity), 
-qui pemert de savoir si vous devez renseignez le paramètre 'refreshToken' ou le laisser null.
-
+#### Optionnel :
+    - refreshToken : permet la vérification de l’éligibilité du sociétaire à l’offre. Si aucun refresh token n’est renseigné, l'utilisateur est considéré comme éligible. Vous avez accès à la méthode "needToken(Activity currentActivity)", qui permet de savoir si vous devez renseignez un nouveau refresh_token.
+    - primaryColorHexa et <secondaryColorHexa> : couleurs du thème utilisé par le SDK (hexadécimal, exemple : '#8822EE').
+    - logoBase64 : votre logo affiché dans le SDK (chaine de caractère au format Base64).
