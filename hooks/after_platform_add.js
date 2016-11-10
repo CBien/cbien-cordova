@@ -101,8 +101,9 @@ module.exports = function(context) {
 
     if(!frameworkFilesToEmbed.length) return;
 
-    myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
-
+    var buildPhase = myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks').buildPhase;
+    buildPhase.dstSubfolderSpec = 10;
+    
     for(var frmFileFullPath of frameworkFilesToEmbed) {
 
         var justFrameworkFile = path.basename(frmFileFullPath);
