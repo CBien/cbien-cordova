@@ -55,8 +55,7 @@ L'utilisation complête :
         String uniqueIdentifier, 
         String refreshToken, 
         String primaryColorHexa, 
-        String secondaryColorHexa, 
-        String logoBase64);
+        String secondaryColorHexa);
 
 L'utilisation simple :
 
@@ -76,5 +75,4 @@ L'utilisation simple :
 
 #### Optionnel :
     - refreshToken : permet la vérification de l’éligibilité du sociétaire à l’offre. Si aucun refresh token n’est renseigné, l'utilisateur est considéré comme éligible. Vous avez accès à la méthode "needToken(Activity currentActivity)", qui permet de savoir si vous devez renseignez un nouveau refresh_token.
-    - primaryColorHexa et <secondaryColorHexa> : couleurs du thème utilisé par le SDK (hexadécimal, exemple : '#8822EE').
-    - logoBase64 : votre logo affiché dans le SDK (chaine de caractère au format Base64).
+    - primaryColorHexa et secondaryColorHexa : couleurs du thème utilisé par le SDK (hexadécimal, exemple : '#8822EE').
