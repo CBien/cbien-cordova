@@ -15,7 +15,6 @@ public class CBienKit extends CordovaPlugin {
     boolean inproduction;
     String uniqueIdentifier;
     String refreshToken;
-    String logo;
     String primaryColor;
     String secondaryColor;
 
@@ -47,7 +46,6 @@ public class CBienKit extends CordovaPlugin {
         }
         else if (action.equals("configure")) {
             
-            this.logo = args.getJSONObject(0).getString("logo");
             this.primaryColor = args.getJSONObject(0).getString("primaryColor");
             this.secondaryColor = args.getJSONObject(0).getString("secondaryColor");
         }
@@ -71,8 +69,7 @@ public class CBienKit extends CordovaPlugin {
                         uniqueIdentifier,
                         refreshToken,
                         primaryColor,
-                        secondaryColor,
-                        logo);
+                        secondaryColor);
             }
         }
 
