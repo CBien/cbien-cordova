@@ -58,11 +58,10 @@ Le SDK doit pouvoir ouvrir l’application CBien. Pour cela modifier le fichier 
 
 ## Configurer le SDK
 
-Vous pouvez intégrer votre logo ainsi que configurer différentes couleurs.
+Vous pouvez configurer différentes couleurs.
 
 Pour cela, à la suite de la précédente ligne, ajouter :
 
-    [CBienCore setLogo:[UIImage imageNamed:@« logo »]];
     [CBienCore setPrimaryColor:[UIColor blueColor]];
     [CBienCore setColorOnPrimaryColor::[UIColor whiteColor]];
     [CBienCore setSecondaryColor:[UIColor redColor]];
