@@ -41,13 +41,6 @@
 +(void)show:(UIViewController*_Nonnull)controller;
 
 /**
- *  Configure the partner logo
- *
- *  @param image The logo
- */
-+(void)setLogo:(UIImage*_Nonnull)image;
-
-/**
  *  Configure the primary color
  *
  *  @param color The UIColor

@@ -38,9 +38,9 @@ To configure CBienKit, you must add domains names and your app's keys to your `c
 
         CBienKit.initialize({uniqueIdentifier: "unique_identifier"})
 
-2. Also, you can customize logo and colors (all parameters are optional)
+2. Also, you can customize colors (all parameters are optional)
 
-        CBienKit.configure({logo:"logo_base64", primaryColor:"#004B9B", colorOnPrimaryColorHex:"#FFFFFF",  secondaryColor:"#FDC600", colorOnSecondaryColorHex:"#FFFFFF"})
+        CBienKit.configure({primaryColor:"#004B9B", colorOnPrimaryColorHex:"#FFFFFF",  secondaryColor:"#FDC600", colorOnSecondaryColorHex:"#FFFFFF"})
 
 4. Check if new refresh token needed and set a new one (Optional)
 

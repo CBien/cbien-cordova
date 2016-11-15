@@ -51,16 +51,10 @@
 - (void)configure:(CDVInvokedUrlCommand*)command
 {
     NSDictionary *options = command.arguments[0];
-    NSString *logoBase64 = options[@"logo"];
     NSString *primaryColorHex = options[@"primaryColor"];
     NSString *colorOnPrimaryColorHex = options[@"colorOnPrimaryColorHex"];
     NSString *secondaryColorHex = options[@"secondaryColor"];
     NSString *colorOnSecondaryColorHex = options[@"colorOnSecondaryColorHex"];
-    
-    if(logoBase64){
-        NSData *data = [[NSData alloc] initWithBase64EncodedString:logoBase64 options:0];
-        [CBienCore setLogo:[UIImage imageWithData:data]];
-    }
     
     if(primaryColorHex){
         [CBienCore setPrimaryColor:[self colorFromHexString:primaryColorHex]];
