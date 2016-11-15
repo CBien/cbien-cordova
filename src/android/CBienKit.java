@@ -51,7 +51,7 @@ public class CBienKit extends CordovaPlugin {
         }
         else if (action.equals("show")) {
 
-            if(logo == null || primaryColor == null || secondaryColor == null) {
+            if(primaryColor == null || secondaryColor == null) {
 
                 CBienSDk.start(cordova.getActivity(),
                         clientId,
