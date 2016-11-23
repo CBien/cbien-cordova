@@ -4,6 +4,7 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import com.cbien.sdk.CBienSDk;
@@ -30,24 +31,28 @@ public class CBienKit extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
-        callbackContext.success();
-
         if (action.equals("initialize")) {
 
             this.uniqueIdentifier = args.getJSONObject(0).getString("uniqueIdentifier");
+
+            callbackContext.success();
         }
         else if (action.equals("refreshTokenNeeded")) {
-            
-            callbackContext.success(CBienSDk.needToken(cordova.getActivity()) ? 1 : 0);
+
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, CBienSDk.needToken(cordova.getActivity())));
         }
         else if (action.equals("setRefreshToken")) {
 
             this.refreshToken = args.getJSONObject(0).getString("refreshToken");
+
+            callbackContext.success();
         }
         else if (action.equals("configure")) {
             
             this.primaryColor = args.getJSONObject(0).getString("primaryColor");
             this.secondaryColor = args.getJSONObject(0).getString("secondaryColor");
+
+            callbackContext.success();
         }
         else if (action.equals("show")) {
 
@@ -71,6 +76,8 @@ public class CBienKit extends CordovaPlugin {
                         primaryColor,
                         secondaryColor);
             }
+
+            callbackContext.success();
         }
 
         return true;
