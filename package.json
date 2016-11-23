@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-cbienkit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Cordova plugin for CBienKit",
   "cordova": {
     "id": "cordova-plugin-cbienkit",
