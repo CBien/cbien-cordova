@@ -43,6 +43,7 @@
 
 		<source-file src="src/android/CBienKit.java" target-dir="src/com/cbien/android/sdk" />
 
+		<framework src="io.realm:realm-gradle-plugin:2.2.0" />
 		<framework src="src/android/cbien.gradle" custom="true" type="gradleReference" />
 
     	<resource-file src="src/android/cbien.aar" target="libs/cbien.aar" />
