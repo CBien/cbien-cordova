@@ -7,17 +7,31 @@ import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
-import com.cbien.sdk.CBienSDk;
+
+import com.cbien.sdk.CBien;
 
 public class CBienKit extends CordovaPlugin {
 
     String clientId;
     String clientSecret;
-    boolean inproduction;
+
     String uniqueIdentifier;
     String refreshToken;
+
+    boolean inproduction = false;
+
+    boolean asIcon = false;
+
+    String font;
+
     String primaryColor;
     String secondaryColor;
+    String stuffColor;
+    String vehicleColor;
+    String domainColor;
+    String headerBackgroundColor;
+    String headerTextIconColor;
+    String headerIndicatorColor;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -39,7 +53,7 @@ public class CBienKit extends CordovaPlugin {
         }
         else if (action.equals("refreshTokenNeeded")) {
 
-            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, CBienSDk.needToken(cordova.getActivity())));
+            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, CBien.needToken(cordova.getActivity())));
         }
         else if (action.equals("setRefreshToken")) {
 
@@ -48,34 +62,71 @@ public class CBienKit extends CordovaPlugin {
             callbackContext.success();
         }
         else if (action.equals("configure")) {
+
+            this.font = args.getJSONObject(0).getString("font");
+
+            this.asIcon = args.getJSONObject(0).getBoolean("asIcon");
             
             this.primaryColor = args.getJSONObject(0).getString("primaryColor");
             this.secondaryColor = args.getJSONObject(0).getString("secondaryColor");
+            this.stuffColor = args.getJSONObject(0).getString("stuffColor");
+            this.vehicleColor = args.getJSONObject(0).getString("vehicleColor");
+            this.domainColor = args.getJSONObject(0).getString("domainColor");
+            this.headerBackgroundColor = args.getJSONObject(0).getString("headerBackgroundColor");
+            this.headerTextIconColor = args.getJSONObject(0).getString("headerTextIconColor");
+            this.headerIndicatorColor = args.getJSONObject(0).getString("headerIndicatorColor");
 
             callbackContext.success();
         }
         else if (action.equals("show")) {
 
-            if(primaryColor == null || secondaryColor == null) {
+            CBien.Args cbienArgs = new CBien.Args(clientId, clientSecret)
+                    .setInProduction(inproduction)
+                    .setFont(font)
+                    .setAsIcon(asIcon);
 
-                CBienSDk.start(cordova.getActivity(),
-                        clientId,
-                        clientSecret,
-                        inproduction,
-                        uniqueIdentifier,
-                        refreshToken);
-            }
-            else {
+            if(refreshToken != null) {
 
-                CBienSDk.start(cordova.getActivity(),
-                        clientId,
-                        clientSecret,
-                        inproduction,
-                        uniqueIdentifier,
-                        refreshToken,
-                        primaryColor,
-                        secondaryColor);
+                cbienArgs.setRefreshToken(refreshToken);
             }
+            if(uniqueIdentifier != null) {
+
+                cbienArgs.setUniqueIdentifier(uniqueIdentifier);
+            }
+            if(primaryColor != null) {
+
+                cbienArgs.setPrimaryColor(primaryColor);
+            }
+            if(secondaryColor != null) {
+
+                cbienArgs.setSecondaryColor(secondaryColor);
+            }
+            if(stuffColor != null) {
+
+                cbienArgs.setStuffColor(stuffColor);
+            }
+            if(vehicleColor != null) {
+
+                cbienArgs.setVehicleColor(vehicleColor);
+            }
+            if(domainColor != null) {
+
+                cbienArgs.setDomainColor(domainColor);
+            }
+            if(headerBackgroundColor != null) {
+
+                cbienArgs.setHeaderBackgroundColor(headerBackgroundColor);
+            }
+            if(headerTextIconColor != null) {
+
+                cbienArgs.setHeaderTextIconColor(headerTextIconColor);
+            }
+            if(headerIndicatorColor != null) {
+
+                cbienArgs.setHeaderIndicatorColor(headerIndicatorColor);
+            }
+
+            CBien.start(cordova.getActivity(), cbienArgs);
 
             callbackContext.success();
         }
