@@ -21,7 +21,7 @@
 	</js-module>
 
 	<platform name="ios">
-		<hook type="after_platform_add" src="hooks/after_platform_add.js" />
+		<hook type="after_plugin_install" src="hooks/after_plugin_install.js" />
 
 		<config-file parent="/*" target="config.xml">
 			<feature name="CBienKit">

@@ -87,8 +87,12 @@ module.exports = function(context) {
     addRunpathSearchBuildProperty(myProj, "Debug");
     addRunpathSearchBuildProperty(myProj, "Release");
 
-    var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
-    projectName = projectName.substr(0, projectName.length-1);
+    //Fix dir
+    //var projectName = myProj.getFirstTarget().firstTarget.name.substr(1);
+    //projectName = projectName.substr(0, projectName.length-1);
+
+    var projectName = myProj.getFirstTarget().firstTarget.name;
+    projectName = projectName.substr(0, projectName.length);
 
     // ADD TO EMBEDED FRAMEWORKS
 
