@@ -11,16 +11,16 @@ This is a plugin that allows your Cordova app to use CBKit for iOS and Android.
 
 To install the plugin in your Cordova app, run the following:
 
-cordova plugin add https://github.com/CBien/cbien-cordova.git
+    cordova plugin add https://github.com/CBien/cbien-cordova.git
 
 Add xcode package (iOS only) :
 
-npm install xcode
+    npm install xcode
 
 ## Configuring 
 
 To configure CBienKit, you must add domains names and your app's keys to your `config.xml`:
-
+```js
 <access origin="http://*.cbien.com"></access>
 <access origin="http://cbien-partner.herokuapp.com"></access>
 <access origin="http://*.amazonaws.com"></access>
@@ -35,12 +35,7 @@ To configure CBienKit, you must add domains names and your app's keys to your `c
 <preference name="cbien-android-clientid" value="your_client_id_for_android"/>
 <preference name="cbien-android-clientsecret" value="your_client_secret_for_android"/>
 <preference name="cbien-android-inproduction" value="true_or_false"/>
-
-<feature name="CDVWKWebViewEngine">
-<param name="ios-package" value="CDVWKWebViewEngine" />
-</feature>
-<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-
+```
 ## Use
 
 1. Firstly, on successful completion of login (or wherever you check your user's authenticated state when your app starts up) you will need to initialize with user's identifier.
