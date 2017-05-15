@@ -21,7 +21,7 @@ module.exports = {
      exec(success, error, "CBKit", "show", [options]);
     },
 
-    FontType : {
+    Font : {
         DEFAULT : 0,
         HELVETICA : 1,
         LATO : 2,
