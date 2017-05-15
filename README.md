@@ -58,8 +58,8 @@ CBienKit.configure({
   vehicleColor : "#636C8C",
   domainColor : "#D39ACC",
   headerBackgroundColor : "#FF3730",
-  headerTextColor : "#684514",
-  headerSelectorColor : "#E4FF6D",
+  headerTextIconColor : "#684514",
+  headerIndicatorColor : "#E4FF6D",
   buttonType : CBKit.ButtonType.ICON,
   font : CBKit.Font.ROBOTO,
 });
@@ -82,7 +82,7 @@ CBienKit.show();
 ```
 
 
-### CBKit.FontType : ```enum```
+### CBKit.Font : ```enum```
 **Kind**: static enum property of ```CBKit```
 **Properties**
 
