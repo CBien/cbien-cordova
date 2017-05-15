@@ -63,9 +63,19 @@ public class CBienKit extends CordovaPlugin {
         }
         else if (action.equals("configure")) {
 
-            this.font = args.getJSONObject(0).getString("font");
+            if(args.getJSONObject(0).has("font")) {
 
-            this.asIcon = args.getJSONObject(0).getBoolean("asIcon");
+                if(args.getJSONObject(0).getInt("font") == 1) {
+
+                    this.font = "helvetica";
+                }
+                else if(args.getJSONObject(0).getInt("font") == 2) {
+
+                    this.font = "lato";
+                }
+            }
+
+            this.asIcon = args.getJSONObject(0).has("buttonType") && args.getJSONObject(0).getInt("buttonType") == 1;
             
             this.primaryColor = args.getJSONObject(0).getString("primaryColor");
             this.secondaryColor = args.getJSONObject(0).getString("secondaryColor");

@@ -61,7 +61,7 @@ CBienKit.configure({
   headerTextColor : "#684514",
   headerSelectorColor : "#E4FF6D",
   buttonType : CBKit.ButtonType.ICON,
-  font : CBKit.FontType.ROBOTO,
+  font : CBKit.Font.ROBOTO,
 });
 ```
 
