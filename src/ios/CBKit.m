@@ -53,10 +53,10 @@
     NSDictionary *options = command.arguments[0];
     
     if (options) {
-        NSString *primaryColorHex = options[@"primaryColorHex"];
-        NSString *colorOnPrimaryColorHex = options[@"colorOnPrimaryColorHex"];
-        NSString *secondaryColorHex = options[@"secondaryColorHex"];
-        NSString *colorOnSecondaryColorHex = options[@"colorOnSecondaryColorHex"];
+        NSString *primaryColorHex = options[@"primaryColor"];
+        NSString *colorOnPrimaryColorHex = options[@"colorOnPrimaryColor"];
+        NSString *secondaryColorHex = options[@"secondaryColor"];
+        NSString *colorOnSecondaryColorHex = options[@"colorOnSecondaryColor"];
         
         if(primaryColorHex){
             [CBKitCore setPrimaryColor:[self colorFromHexString:primaryColorHex]];
@@ -75,9 +75,9 @@
         }
         
         
-        NSString *stuffColorHex = options[@"stuffColorHex"];
-        NSString *vehicleColorHex = options[@"vehicleColorHex"];
-        NSString *domainColorHex = options[@"domainColorHex"];
+        NSString *stuffColorHex = options[@"stuffColor"];
+        NSString *vehicleColorHex = options[@"vehicleColor"];
+        NSString *domainColorHex = options[@"domainColor"];
         
         if(stuffColorHex) {
             [CBKitCore setStuffColor:[self colorFromHexString:stuffColorHex]];
@@ -91,9 +91,9 @@
             [CBKitCore setDomainColor:[self colorFromHexString:domainColorHex]];
         }
         
-        NSString *headerBackgroundColorHex = options[@"headerBackgroundColorHex"];
-        NSString *headerTextColorHex = options[@"headerTextColorHex"];
-        NSString *headerSelectorColorHex = options[@"headerSelectorColorHex"];
+        NSString *headerBackgroundColorHex = options[@"headerBackgroundColor"];
+        NSString *headerTextColorHex = options[@"headerTextIconColor"];
+        NSString *headerSelectorColorHex = options[@"headerIndicatorColor"];
         
         if(headerBackgroundColorHex) {
             [CBKitCore setHeaderBackgroundColor:[self colorFromHexString:headerBackgroundColorHex]];
