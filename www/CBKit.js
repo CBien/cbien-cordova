@@ -1,21 +1,35 @@
 var exec = require('cordova/exec');
-               
-exports.initialize = function(options, success, error) {
-	exec(success, error, "CBKit", "initialize", [options]);
-};
-               
-exports.configure = function(options, success, error) {
-    exec(success, error, "CBKit", "configure", [options]);
-};
 
-exports.refreshTokenNeeded = function(success, error) {
-    exec(success, error, "CBKit", "refreshTokenNeeded", []);
-};
+module.exports = {
+     initialize: function(options, success, error) {
+        exec(success, error, "CBKit", "initialize", [options]);
+    },
 
-exports.setRefreshToken = function(options, success, error) {
-    exec(success, error, "CBKit", "setRefreshToken", [options]);
-};
-               
-exports.show = function(options, success, error) {
-    exec(success, error, "CBKit", "show", [options]);
+    configure: function(options, success, error) {
+     exec(success, error, "CBKit", "configure", [options]);
+    },
+
+    refreshTokenNeeded: function(success, error) {
+     exec(success, error, "CBKit", "refreshTokenNeeded", []);
+    },
+
+    setRefreshToken: function(options, success, error) {
+     exec(success, error, "CBKit", "setRefreshToken", [options]);
+    },
+
+    show: function(options, success, error) {
+     exec(success, error, "CBKit", "show", [options]);
+    },
+
+    FontType : {
+        DEFAULT : 0,
+        HELVETICA : 1,
+        LATO : 2,
+        ROBOTO : 3,
+    },
+
+    ButtonType : {
+        IMAGE : 0,
+        ICON : 1,
+    }
 };

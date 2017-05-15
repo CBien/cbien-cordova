@@ -25,6 +25,9 @@ typedef NS_ENUM(NSUInteger, CBKitFont) {
             uniqueIdentifier:(nonnull NSString*)uniqueIdentifier
                   production:(BOOL)production;
 
++(BOOL)refreshTokenNeeded;
++(void)setRefreshToken:(NSString *_Nonnull)refreshToken;
+
 +(void)setPrimaryColor:(nonnull UIColor*)color;
 +(void)setColorOnPrimaryColor:(nonnull UIColor*)color;
 +(void)setSecondaryColor:(nonnull UIColor*)color;

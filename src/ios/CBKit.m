@@ -9,8 +9,8 @@
 
 - (void)initialize:(CDVInvokedUrlCommand*)command;
 - (void)configure:(CDVInvokedUrlCommand*)command;
-//- (void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command;
-//- (void)setRefreshToken:(CDVInvokedUrlCommand*)command;
+- (void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command;
+- (void)setRefreshToken:(CDVInvokedUrlCommand*)command;
 - (void)show:(CDVInvokedUrlCommand*)command;
 
 @end
@@ -51,54 +51,102 @@
 - (void)configure:(CDVInvokedUrlCommand*)command
 {
     NSDictionary *options = command.arguments[0];
-    NSString *primaryColorHex = options[@"primaryColor"];
-    NSString *colorOnPrimaryColorHex = options[@"colorOnPrimaryColorHex"];
-    NSString *secondaryColorHex = options[@"secondaryColor"];
-    NSString *colorOnSecondaryColorHex = options[@"colorOnSecondaryColorHex"];
     
-    if(primaryColorHex){
-        [CBKitCore setPrimaryColor:[self colorFromHexString:primaryColorHex]];
-    }
-    
-    if(colorOnPrimaryColorHex){
-        [CBKitCore setColorOnPrimaryColor:[self colorFromHexString:colorOnPrimaryColorHex]];
-    }
-    
-    if(secondaryColorHex){
-        [CBKitCore setSecondaryColor:[self colorFromHexString:secondaryColorHex]];
-    }
-    
-    if(colorOnSecondaryColorHex){
-        [CBKitCore setColorOnSecondaryColor:[self colorFromHexString:colorOnSecondaryColorHex]];
+    if (options) {
+        NSString *primaryColorHex = options[@"primaryColorHex"];
+        NSString *colorOnPrimaryColorHex = options[@"colorOnPrimaryColorHex"];
+        NSString *secondaryColorHex = options[@"secondaryColorHex"];
+        NSString *colorOnSecondaryColorHex = options[@"colorOnSecondaryColorHex"];
+        
+        if(primaryColorHex){
+            [CBKitCore setPrimaryColor:[self colorFromHexString:primaryColorHex]];
+        }
+        
+        if(colorOnPrimaryColorHex){
+            [CBKitCore setColorOnPrimaryColor:[self colorFromHexString:colorOnPrimaryColorHex]];
+        }
+        
+        if(secondaryColorHex){
+            [CBKitCore setSecondaryColor:[self colorFromHexString:secondaryColorHex]];
+        }
+        
+        if(colorOnSecondaryColorHex){
+            [CBKitCore setColorOnSecondaryColor:[self colorFromHexString:colorOnSecondaryColorHex]];
+        }
+        
+        
+        NSString *stuffColorHex = options[@"stuffColorHex"];
+        NSString *vehicleColorHex = options[@"vehicleColorHex"];
+        NSString *domainColorHex = options[@"domainColorHex"];
+        
+        if(stuffColorHex) {
+            [CBKitCore setStuffColor:[self colorFromHexString:stuffColorHex]];
+        }
+        
+        if(vehicleColorHex) {
+            [CBKitCore setVehicleColor:[self colorFromHexString:vehicleColorHex]];
+        }
+        
+        if(domainColorHex) {
+            [CBKitCore setDomainColor:[self colorFromHexString:domainColorHex]];
+        }
+        
+        NSString *headerBackgroundColorHex = options[@"headerBackgroundColorHex"];
+        NSString *headerTextColorHex = options[@"headerTextColorHex"];
+        NSString *headerSelectorColorHex = options[@"headerSelectorColorHex"];
+        
+        if(headerBackgroundColorHex) {
+            [CBKitCore setHeaderBackgroundColor:[self colorFromHexString:headerBackgroundColorHex]];
+        }
+        
+        if(headerTextColorHex) {
+            [CBKitCore setHeaderTextColor:[self colorFromHexString:headerTextColorHex]];
+        }
+        
+        if(headerSelectorColorHex) {
+            [CBKitCore setHeaderSelectorColor:[self colorFromHexString:headerSelectorColorHex]];
+        }
+        
+        NSNumber *buttonTypeValue = options[@"buttonType"];
+        if (buttonTypeValue) {
+            CBKitButtonType buttonType = [buttonTypeValue intValue];
+            [CBKitCore setButtonType:buttonType];
+        }
+        
+        NSNumber *fontValue = options[@"font"];
+        if (fontValue) {
+            CBKitFont font = [fontValue intValue];
+            [CBKitCore setFont:font];
+        }
     }
     
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
-/*
- -(void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command
- {
- CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[CBienCore refreshTokenNeeded]];
- [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
- }
- 
- -(void)setRefreshToken:(CDVInvokedUrlCommand*)command
- {
- NSDictionary *options = command.arguments[0];
- NSString *refreshToken = options[@"refreshToken"];
- 
- CDVPluginResult* pluginResult = nil;
- 
- if(refreshToken != nil && refreshToken.length>0){
- [CBKitCore setRefreshToken:refreshToken];
- pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
- } else {
- pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
- }
- 
- [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
- }
- */
+
+-(void)refreshTokenNeeded:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[CBKitCore refreshTokenNeeded]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void)setRefreshToken:(CDVInvokedUrlCommand*)command
+{
+    NSDictionary *options = command.arguments[0];
+    NSString *refreshToken = options[@"refreshToken"];
+    
+    CDVPluginResult* pluginResult = nil;
+    
+    if(refreshToken != nil && refreshToken.length>0){
+        [CBKitCore setRefreshToken:refreshToken];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void)show:(CDVInvokedUrlCommand*)command
 {
     [CBKitCore show:self.viewController];
