@@ -47,7 +47,7 @@ To configure CBienKit, you must add domains names and your app's keys to your `c
 
 ```js
 CBienKit.initialize({
-uniqueIdentifier: "unique_identifier"
+  uniqueIdentifier: "unique_identifier"
 });
 ```
 
@@ -55,18 +55,18 @@ uniqueIdentifier: "unique_identifier"
 
 ```js
 CBienKit.configure({
-primaryColor : "#004B9B", 
-colorOnPrimaryColor : "#FFFFFF",  // iOS only
-secondaryColor : "#FDC600", 
-colorOnSecondaryColor : "#FFFFFF", // iOS only
-stuffColor : "#41F4C4",
-vehicleColor : "#636C8C",
-domainColor : "#D39ACC",
-headerBackgroundColor : "#FF3730",
-headerTextColor : "#684514",
-headerSelectorColor : "#E4FF6D",
-buttonType : CBKit.ButtonType.ICON,
-font : CBKit.FontType.ROBOTO,
+  primaryColor : "#004B9B", 
+  colorOnPrimaryColor : "#FFFFFF",  // iOS only
+  secondaryColor : "#FDC600", 
+  colorOnSecondaryColor : "#FFFFFF", // iOS only
+  stuffColor : "#41F4C4",
+  vehicleColor : "#636C8C",
+  domainColor : "#D39ACC",
+  headerBackgroundColor : "#FF3730",
+  headerTextColor : "#684514",
+  headerSelectorColor : "#E4FF6D",
+  buttonType : CBKit.ButtonType.ICON,
+  font : CBKit.FontType.ROBOTO,
 });
 ```
 
@@ -74,9 +74,9 @@ font : CBKit.FontType.ROBOTO,
 
 ```js
 CBienKit.refreshTokenNeeded( function(needed) { 
-if (needed) {
-CBienKit.setRefreshToken({refreshToken: "refresh_token"}); 
-} 
+  if (needed) {
+    CBienKit.setRefreshToken({refreshToken: "refresh_token"}); 
+  } 
 });
 ```
 
