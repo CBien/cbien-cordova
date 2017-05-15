@@ -1,4 +1,4 @@
-# CBienKit SDK iOS
+# CBKit SDK iOS
 
 ## Installation
 
@@ -14,7 +14,7 @@
 
 Ajouter le SDK dans votre AppDelegate
 
-    #import <CBKit/CBienKit.h>
+    #import <CBKit/CBKit.h>
 
 Dans la méthode **didFinishLaunchingWithOptions** (ou au moment de la connexion de l'utilisateur pour avoir son unique_id) :
 
