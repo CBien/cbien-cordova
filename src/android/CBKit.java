@@ -10,7 +10,7 @@ import org.json.JSONException;
 
 import com.cbien.sdk.CBien;
 
-public class CBienKit extends CordovaPlugin {
+public class CBKit extends CordovaPlugin {
 
     String clientId;
     String clientSecret;

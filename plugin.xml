@@ -42,15 +42,15 @@
 
 	<platform name="android">
 
-		<source-file src="src/android/CBienKit.java" target-dir="src/com/cbien/android/sdk" />
+		<source-file src="src/android/CBKit.java" target-dir="src/com/cbien/android/sdk" />
 		
 		<framework src="src/android/cbien.gradle" custom="true" type="gradleReference" />
 
     	<resource-file src="src/android/cbien.aar" target="libs/cbien.aar" />
 
         <config-file target="config.xml" parent="/*">
-            <feature name="CBienKit">
-                <param name="android-package" value="com.cbien.android.sdk.CBienKit"/>
+            <feature name="CBKit">
+                <param name="android-package" value="com.cbien.android.sdk.CBKit"/>
 				<param name="onload" value="true" />
             </feature>
         </config-file>
