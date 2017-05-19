@@ -9,7 +9,6 @@
 
 	<dependency id="cordova-plugin-file" version="^4.0.0" />
 	<dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
-	<dependency id="cordova-plugin-wkwebview-engine" version="^1.0.0"/>
 
     <engines>
       <engine name="cordova" version=">=4.0.0" />
