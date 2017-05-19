@@ -25,7 +25,7 @@ Avec :
     • <CLIENT_ID> : le client ID que nous vous avons fourni.
     • <SECRET> : la clé secrète que nous vous avons fourni.
     • <UNIQUE_ID> : un identifiant unique de l’utilisateur utilisant l’application.
-    • <IN_PRODUCTION> : choix entre le serveur de recette (*NO*) ou la production (*YES*)
+    • <IN_PRODUCTION> : choix entre le serveur de recette (NO) ou la production (YES)
 
 Le SDK doit pouvoir ouvrir l’application CBien. Pour cela modifier le fichier « info.plist », ajouter la clé **LSApplicationQueriesSchemes** (array) et ajouter la chaine **cbien**
 

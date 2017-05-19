@@ -9,13 +9,13 @@ This is a plugin that allows your Cordova app to use CBKit for iOS and Android.
 
 ## Installation
 
-To install the plugin in your Cordova app, run the following:
-
-    cordova plugin add https://github.com/CBien/cbien-cordova.git
-
 Add xcode package (iOS only) :
 
     npm install xcode
+    
+To install the plugin in your Cordova app, run the following:
+
+    cordova plugin add https://github.com/CBien/cbien-cordova.git
 
 ## Configuring 
 
@@ -100,7 +100,7 @@ CBienKit.show();
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | IMAGE | ```number``` | ```0``` | Return image |
-| ICON | ```number``` | ```1``` | Return Helvetica font |
+| ICON | ```number``` | ```1``` | Return icon |
 
 ## License
 
