@@ -44,7 +44,7 @@ module.exports = function (ctx) {
 
                     if (data.indexOf('classpath \'io.realm:realm-gradle-plugin') === -1) {
 
-                        newValue = newValue.replace('classpath', 'classpath \'io.realm:realm-gradle-plugin:2.2.0\'\nclasspath');
+                        newValue = newValue.replace('classpath', 'classpath \'io.realm:realm-gradle-plugin:3.3.2\'\nclasspath');
                     }
 
                     if (newValue.indexOf('mavenCentral()') === -1) {
