@@ -19,7 +19,7 @@ To install the plugin in your Cordova app, run the following:
 
 ## Configuring 
 
-To configure CBienKit, you must add domains names and your app's keys to your `config.xml`:
+To configure CBKit, you must add domains names and your app's keys to your `config.xml`:
 ```js
 <access origin="http://*.cbien.com"></access>
 <access origin="http://cbien-partner.herokuapp.com"></access>
@@ -41,7 +41,7 @@ To configure CBienKit, you must add domains names and your app's keys to your `c
 1. Firstly, on successful completion of login (or wherever you check your user's authenticated state when your app starts up) you will need to initialize with user's identifier.
 
 ```js
-CBienKit.initialize({
+CBKit.initialize({
   uniqueIdentifier: "unique_identifier"
 });
 ```
@@ -49,7 +49,7 @@ CBienKit.initialize({
 2. Also, you can customize colors (all parameters are optional)
 
 ```js
-CBienKit.configure({
+CBKit.configure({
   primaryColor : "#004B9B", 
   colorOnPrimaryColor : "#FFFFFF",  // iOS only
   secondaryColor : "#FDC600", 
@@ -68,9 +68,9 @@ CBienKit.configure({
 4. Check if new refresh token needed and set a new one (Optional)
 
 ```js
-CBienKit.refreshTokenNeeded( function(needed) { 
+CBKit.refreshTokenNeeded( function(needed) { 
   if (needed) {
-    CBienKit.setRefreshToken({refreshToken: "refresh_token"}); 
+    CBKit.setRefreshToken({refreshToken: "refresh_token"}); 
   } 
 });
 ```
@@ -78,7 +78,7 @@ CBienKit.refreshTokenNeeded( function(needed) {
 3. Finally, display CBien screens.
 
 ```js
-CBienKit.show();
+CBKit.show();
 ```
 
 
