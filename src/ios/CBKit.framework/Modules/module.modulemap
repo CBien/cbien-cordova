@@ -7,4 +7,5 @@ framework module CBKit {
 
 module CBKit.Swift {
     header "CBKit-Swift.h"
+    requires objc
 }
