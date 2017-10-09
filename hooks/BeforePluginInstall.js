@@ -49,7 +49,16 @@ module.exports = function (ctx) {
 
                     if (newValue.indexOf('mavenCentral()') === -1) {
 
-                        newValue = newValue.replace('jcenter()','mavenCentral()\njcenter()')
+                        var re = /repositories *{/gi;
+
+                        newValue = newValue.replace(re,'repositories {\nmavenCentral()')
+                    }
+
+                    if (newValue.indexOf('jcenter()') === -1) {
+
+                        var re = /repositories *{/gi;
+
+                        newValue = newValue.replace(re,'repositories {\njcenter()')
                     }
 
                     fs.writeFile(gradleFileLocation, newValue, 'utf-8', function (err) {
